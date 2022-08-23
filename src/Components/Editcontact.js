@@ -11,11 +11,8 @@ const EditContact = () => {
     id:""
   });
   const context = useContext(ContactContext);
-  const { Contacts ,editContact,getContact} = context;
-  useEffect(() => {
-    getContact()
-    //eslint-disable-next-line
-  }, [])
+  const { Contacts ,editContact} = context;
+
   const ref = useRef(null);
   const refClose = useRef(null);
   const updateContact = (currentContact) => {
