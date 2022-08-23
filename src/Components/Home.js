@@ -1,10 +1,12 @@
-import React from 'react'
-import Contacts from './Contacts'
+import React from "react";
+import Contacts from "./Contacts";
 
 const Home = () => {
   return (
-    <div><Contacts/></div>
-  )
-}
+    <>
+      <Contacts />
+    </>
+  );
+};
 
-export default Home
+export default Home;

@@ -30,7 +30,7 @@ const EditContact = () => {
     // console.log(currentContact._id)
   };
   const handleClick = () => {
-    editContact(contact.id,contact.ename,contact.ephone,contact.eemail,contact.etype)
+    editContact(contact.id,contact.ename,contact.eemail,contact.ephone,contact.etype)
     refClose.current.click();
   };
   const onChange = (e) => {

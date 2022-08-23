@@ -19,6 +19,7 @@ router.post(
   ],
   async (req, res) => {
     const error = validationResult(req);
+    let success= false;
     if (!error.isEmpty()) {
       return res.status(400).json({ error: error.array() });
     }
@@ -41,7 +42,8 @@ router.post(
         },
       };
       const authToken = jwt.sign( data, jwt_token );
-      res.json({ authToken });
+      success=true;
+      res.json({success, authToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("some error occured");
@@ -57,6 +59,7 @@ router.post(
     body("password", "passowrd cant be empty").exists(),
   ],
   async (req, res) => {
+    let success = false;
     const error = validationResult(req);
     if (!error.isEmpty()) {
       return res.status(400).json({ error: error.array() });
@@ -81,7 +84,8 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, jwt_token);
-      res.json({ authToken });
+      success=true;
+      res.json({success, authToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal server error");

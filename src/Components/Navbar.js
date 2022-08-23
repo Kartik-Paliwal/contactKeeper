@@ -1,9 +1,14 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressBook } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import {useNavigate,Link } from "react-router-dom";
 // import Signup
 const Navbar = () => {
+  let history= useNavigate();
+  const handleLogout=()=>{
+    localStorage.removeItem('token')
+    history("/login")
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,17 +29,19 @@ const Navbar = () => {
           </button>
         </div>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            {!localStorage.getItem('token')?
           <div className="d-flex">
-            <Link className="nav-link  mx-1 my-1 active " to="/signup">
+            <Link className={`nav-link  mx-1 my-1 active`} to="/signup">
               Signup
             </Link>
             <Link className="nav-link  mx-1 my-1 active " to="/login">
               Login
             </Link>
-            <Link className="nav-link  mx-1 my-1 active " to="/">
+          </div>
+            :<Link className="nav-link  mx-1 my-1 active " onClick={handleLogout}>
               LogOut
             </Link>
-          </div>
+            }
         </div>
       </nav>
     </>
